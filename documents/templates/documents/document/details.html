@@ -1,0 +1,35 @@
+<!-- documents/document/details.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}Détails du Document{{ document.nom }}{% endblock %}
+
+{% block content %}
+    <h2>{{ document.nom }}</h2>
+    <p>Catégorie: {{ document.categorie }}</p>
+    {% if document.fichier %}
+        <img id="img" src="{{ document.get_image_url }}" alt="{{ document.nom }}">
+    {% endif %}
+
+    <!-- Display comments -->
+    <h3>Comments</h3>
+    {% if document.comments.all %}
+        <ul class="comment-list">
+            {% for comment in document.comments.all %}
+                <li class="comment">
+                    <p class="comment-info">
+                        Comment by {{ comment.name }} on {{ comment.created }}
+                    </p>
+                    <p class="comment-body">
+                        {{ comment.body|linebreaks }}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No comments yet.</p>
+    {% endif %}
+
+    <!-- Include the comment form -->
+    {% include "documents/document/includes/comment_form.html" %}
+{% endblock %}
+

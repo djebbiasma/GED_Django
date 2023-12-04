@@ -1,0 +1,59 @@
+<!-- documents/list.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}Liste des Documents{% endblock %}
+
+{% block content %}
+
+    <h2>Liste des Documents</h2>
+    <form method="GET" action="{% url 'document_list' %}">
+        <input type="text" name="q" placeholder="Search documents..." value="{{ request.GET.q }}">
+        <button class="btn btn-light-purple btn-sm" type="submit">Search</button>
+    </form>
+    <hr>
+        <!-- Ajout du bouton d'ajout de document -->
+        <a href="{% url 'document_new' %}" class="btn btn-light-purple btn-sm">Ajouter un document <span style="font-size: 1.2em;">+</span></a>
+        <hr>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nom du Document</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">Author</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% if request.GET.q %}
+                    {% for document in object_list %}
+                        {% if request.GET.q in document.nom|lower or request.GET.q in document.categorie|lower %}
+                            <tr>
+                                <td>{{ document.nom }}</td>
+                                <td>{{ document.categorie }}</td>
+                                <td>
+                                    <a href="{% url 'document_detail' pk=document.pk %}" class="btn btn-light-purple btn-sm">Voir les détails</a>
+                                    <a href="{% url 'document_edit' pk=document.pk %}" class="btn btn-light-purple btn-sm">Modifier </a>
+                                    <a href="{% url 'document_delete' pk=document.pk %}" class="btn btn-light-purple btn-sm">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for document in object_list %}
+                        <tr>
+                            <td>{{ document.nom }}</td>
+                            <td>{{ document.categorie }}</td>
+                            <td>
+                                <a href="{% url 'document_detail' pk=document.pk %}" class="btn btn-light-purple btn-sm">Voir les détails</a>
+                                <a href="{% url 'document_edit' pk=document.pk %}" class="btn btn-light-purple btn-sm">Modifier </a>
+                                <a href="{% url 'document_delete' pk=document.pk %}" class="btn btn-light-purple btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

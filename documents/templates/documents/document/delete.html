@@ -1,0 +1,14 @@
+<!-- documents/delete.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}Supprimer le Document{{ document.nom }}{% endblock %}
+
+{% block content %}
+    <h2>Supprimer {{ document.nom }}</h2>
+    <p>Êtes-vous sûr de vouloir supprimer ce document ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmer la suppression</button>
+    </form>
+    <a href="{% url 'document_detail' pk=document.pk %}">Annuler</a>
+{% endblock %}

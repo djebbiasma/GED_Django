@@ -1,0 +1,17 @@
+<!-- documents/dossier/dossier_list.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}Liste des Dossiers{% endblock %}
+
+{% block content %}
+    <h2>Liste des Dossiers</h2>
+    <hr>
+    <a href="{% url 'dossier_create' %}" class="btn btn-light-purple btn-sm">Ajouter un dossier <span style="font-size: 1.2em;">+</span></a>
+
+    <ul>
+        <hr>
+        {% for dossier in object_list %}
+            <li><a href="{% url 'dossier_detail' pk=dossier.pk %}">{{ dossier.nom }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

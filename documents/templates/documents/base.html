@@ -1,0 +1,62 @@
+<!-- documents/base.html -->
+<!-- documents/base.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Document GED{% endblock %}</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'documents/style.css' %}" rel="stylesheet">
+
+    <!-- Add links to Bootstrap or any other CSS framework if desired -->
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block  sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column" style="list-style: none;padding: 0;">
+                        <li class="nav-item">
+                              <!-- Image de profil -->
+                    <div class="text-center mt-3">
+                        <img src="{% static 'media/documents/asma.jpg' %}" alt="Profile Image" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+                    </div>
+                    <hr>
+                            <a class="nav-link active" href="{% url 'document_list' %}">
+                                Accueil
+                            </a>
+                            <hr>
+                            <a class="nav-link active" href="{% url 'dossier_list' %}">
+                                Dossier
+                            </a>
+                        
+                        <hr>
+                        <a class="nav-link active" href="{% url 'document_new' %}">
+                            nouveau Document
+                        </a>
+                    
+                    <hr>
+                        <!-- Add more sidebar items as needed -->
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div id="content">
+                    {% block content %}{% endblock %}
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript or other scripts if needed -->
+</body>
+</html>

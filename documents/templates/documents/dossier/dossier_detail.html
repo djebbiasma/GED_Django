@@ -1,0 +1,19 @@
+<!-- documents/dossier/dossier_detail.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}Détails du Dossier {{ dossier.nom }}{% endblock %}
+
+{% block content %}
+    <h2>{{ dossier.nom }}</h2>
+
+    <h3>Documents associés :</h3>
+    {% if dossier.documents.all %}
+        <ul>
+            {% for document in dossier.documents.all %}
+                <li><a href="{% url 'document_detail' pk=document.pk %}">{{ document.nom }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun document associé à ce dossier.</p>
+    {% endif %}
+{% endblock %}

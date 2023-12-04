@@ -1,0 +1,13 @@
+<!-- documents/dossier/dossier_form.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}{% if dossier.id %}Modifier{% else %}Créer{% endif %} un Dossier{% endblock %}
+
+{% block content %}
+    <h2>{% if dossier.id %}Modifier{% else %}Créer{% endif %} un Dossier</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer</button>
+    </form>
+{% endblock %}

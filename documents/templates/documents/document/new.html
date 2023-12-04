@@ -1,0 +1,45 @@
+<!-- documents/new.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}Nouveau Document{% endblock %}
+
+{% block content %}
+    <h2>Nouveau Document</h2>
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="{{ form.nom.id_for_label }}">Nom :</label>
+                    {{ form.nom }}
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="{{ form.fichier.id_for_label }}">Fichier :</label>
+                    {{ form.fichier }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="{{ form.categorie.id_for_label }}">Catégorie :</label>
+                    {{ form.categorie }}
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="{{ form.dossier.id_for_label }}">Dossier :</label>
+                    {{ form.dossier }}
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+{% endblock %}

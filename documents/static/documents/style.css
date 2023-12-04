@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333;
+}
+
+a {
+    color: #2c3e50; /* Dark blue link color */
+    text-decoration: none;
+}
+
+h1, h2 {
+    font-weight: bold;
+    border-bottom: 2px solid #2c3e50; /* Dark blue border bottom */
+    padding: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+#content {
+    float: center;
+    width: 65%;
+    padding: 20px;
+}
+
+#img {
+    display: block;
+    margin: 0 auto; /* Centre l'image horizontalement */
+    width: 65%;
+    padding: 20px;
+}
+
+
+p.date {
+    color: #555;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Pagination */
+.pagination {
+    margin: 40px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Forms */
+label {
+    color: #34495e; /* Dark gray-blue for labels */
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input,
+textarea {
+    margin: 0 0 15px;
+    background: #ecf0f1;
+    border: 1px solid #bdc3c7; /* Light blue-gray border */
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    font-weight: bold;
+    background: #3498db; /* Blue submit button */
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.errorlist {
+    color: #e74c3c;
+    margin: 0 0 10px;
+}
+
+/* Comments */
+.comment {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.comment .info {
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #8e44ad; /* Purple background color */
+    color: #fff; /* White text color */
+    padding: 15px 0; /* Adjust padding as needed */
+}
+#sidebar {
+    float: left;
+    width: 10%; /* Réduire la largeur du sidebar à 20% */
+    padding: 20px;
+    background: #966B9D; /* Violet background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    height: 100vh;}
+ /* documents/style.css */
+.btn-light-purple {
+    background-color: #e6e6fa; /* Violet très clair */
+    border-color: #e6e6fa;
+    color: #C98686; /* Code couleur violet foncé */
+}
+
+.btn-light-purple:hover {
+    background-color: #d8bfd8; /* Violet clair au survol */
+    border-color: #d8bfd8;
+    color: #F2B880;
+}
+
+.btn-lg {
+    padding: 15px 30px; /* Ajustez la taille du bouton selon vos besoins */
+    font-size: 18px; /* Ajustez la taille de la police selon vos besoins */
+}
+/* Style for comments */
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.comment-info {
+    font-style: italic;
+    color: #666;
+}
+
+.comment-body {
+    margin-top: 10px;
+}

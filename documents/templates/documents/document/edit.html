@@ -1,0 +1,13 @@
+<!-- documents/edit.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}Modifier le Document{{ document.nom }}{% endblock %}
+
+{% block content %}
+    <h2>Modifier {{ document.nom }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- documents/dossier/dossier_confirm_delete.html -->
+{% extends 'documents/base.html' %}
+
+{% block title %}Confirmer la suppression du Dossier{% endblock %}
+
+{% block content %}
+    <h2>Confirmer la suppression du Dossier</h2>
+    <p>Êtes-vous sûr de vouloir supprimer le dossier "{{ dossier.nom }}" ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Oui, supprimer</button>
+    </form>
+    <a href="{% url 'dossier_list' %}">Annuler</a>
+{% endblock %}
