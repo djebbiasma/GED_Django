@@ -17,7 +17,7 @@
             {% for comment in document.comments.all %}
                 <li class="comment">
                     <p class="comment-info">
-                        Comment by {{ comment.name }} on {{ comment.created }}
+                        Comment by {{ comment.user }} on {{ comment.created }}
                     </p>
                     <p class="comment-body">
                         {{ comment.body|linebreaks }}

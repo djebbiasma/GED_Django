@@ -24,10 +24,15 @@
                 <div class="position-sticky">
                     <ul class="nav flex-column" style="list-style: none;padding: 0;">
                         <li class="nav-item">
-                              <!-- Image de profil -->
-                    <div class="text-center mt-3">
-                        <img src="{% static 'media/documents/asma.jpg' %}" alt="Profile Image" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
-                    </div>
+     <!-- Autres liens de la barre de navigation -->
+                        {% if user.is_authenticated %}
+                            <li>Bienvenue, {{ user.username }}</li>
+                            <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+                        {% else %}
+                            <li><a href="{% url 'login' %}">Se connecter</a></li>
+                            <!-- Ajoutez d'autres liens pour l'inscription, etc., si nécessaire -->
+                        {% endif %}
+
                     <hr>
                             <a class="nav-link active" href="{% url 'document_list' %}">
                                 Accueil

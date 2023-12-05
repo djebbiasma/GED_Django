@@ -5,6 +5,7 @@ from django.urls import reverse_lazy,reverse
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .forms import CommentForm
 from django.db.models import Q
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 class DocumentListView(ListView):
     model = Document
@@ -43,13 +44,16 @@ class DossierListView(ListView):
 class DossierDetailView(DetailView):
     model = Dossier
     template_name = 'documents/dossier/dossier_detail.html'  
-
-class DossierCreateView(CreateView):
+#lahne dossiercreateview heritent mend eux classes: userpassesstestmixin et createview. user passesstestmixin hiya eli bech tjibli test_func eli bech
+#traja3li true ke el user admin . 
+class DossierCreateView(UserPassesTestMixin,CreateView):
     model = Dossier
     template_name = 'documents/dossier/dossier_form.html'  
     fields = ['nom']
     success_url = reverse_lazy('dossier_list')
-
+    def test_func(self):
+        # Check if the user has the 'admin' role
+        return self.request.user.role == 'admin'
 class DossierUpdateView(UpdateView):
     model = Dossier
     template_name = 'documents/dossier/dossier_form.html'  
@@ -67,7 +71,10 @@ def add_comment(request, document_id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.document = document
+            comment.user = request.user
+
             comment.save()
+
             return HttpResponseRedirect(reverse('document_detail', args=[document.id]))
     else:
         form = CommentForm()

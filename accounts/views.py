@@ -1,23 +1,21 @@
-# accounts/views.py
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-# Import your UserRegistrationForm
-from .forms import UserRegistrationForm  # Make sure to adjust the import based on your actual file structure
+from .forms import UserRegistrationForm  
 
 def register_view(request):
     if request.user.is_authenticated:
-        return redirect(reverse('documents:document_list'))
+        return redirect(reverse('document_list'))
 
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect(reverse('documents:document_list'))
+            return redirect(reverse('document_list'))
     else:
         form = UserRegistrationForm()
 

@@ -15,7 +15,7 @@ class Document(models.Model):
     fichier = models.FileField(upload_to='documents/')
     categorie = models.CharField(max_length=50)
     dossier = models.ForeignKey(Dossier, on_delete=models.CASCADE, related_name='documents', null=True, blank=True, default=None)
-    #author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='documents',null=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='authored_documents', null=True, blank=True)
 
     def __str__(self):
         return self.nom
@@ -30,7 +30,6 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     document = models.ForeignKey(Document, on_delete=models.CASCADE, related_name='comments')
-    name = models.CharField(max_length=80, blank=True)
     email = models.EmailField()
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
